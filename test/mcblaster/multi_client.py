@@ -24,8 +24,8 @@ class client(object):
         self.args.extend(["-k", str(k)])
         self.args.extend(["-t", str(t)])
         self.args.extend(["-z", str(z)])
-        self.args.extend(["-u", str(client_port)])
-        self.args.extend(["-f", str(server_port)])
+        self.args.extend(["-u", str(server_port)])
+        self.args.extend(["-f", str(client_port)])
         self.args.extend(["-r", str(rate)])
         self.args.extend(["-d", str(d)])
         self.args.extend(["{}".format(server)])
@@ -62,7 +62,7 @@ def start_clients(nb_nodes, server_port, client_port):
 
         if client_port > 0 and server_port > 0:
             client_port += 1
-            server_port += 1
+#            server_port += 1
     return client_list
 
 def parse_args():
@@ -76,8 +76,8 @@ if __name__ == '__main__':
     args = parse_args()
     server = "10.10.1.2"
     nb_nodes = args.nb_nodes if args.nb_nodes else 1
-    nb_cores = args.nb_cores if args.nb_cores else 1
+    nb_cores = args.nb_cores if args.nb_cores else 4
     client_port = 11211
-    server_port = 11211
+    server_port = 11311
 
     client_list = start_clients(nb_nodes, server_port, client_port)

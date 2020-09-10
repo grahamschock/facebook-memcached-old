@@ -23,16 +23,16 @@ class stats(object):
 
 
     def pretty_print(self):
-        print "request type : {}".format(self.request_type)
-        print "Requests sent: {}".format(self.nsent)
-        print "throughput   : {} requests per second".format(self.throughput)
-        print "average      : {} us".format(self.avg)
-        print "Timeouts     : {}".format(self.timeout)
-        print "Errors       : {} us".format(self.err)
-        print "Invalid      : {} us".format(self.invad)
-        print "Ignored      : {} us".format(self.ignore)
+        print ("request type : {}".format(self.request_type))
+        print ("Requests sent: {}".format(self.nsent))
+        print ("throughput   : {} requests per second".format(self.throughput))
+        print ("average      : {} us".format(self.avg))
+        print ("Timeouts     : {}".format(self.timeout))
+        print ("Errors       : {} us".format(self.err))
+        print ("Invalid      : {} us".format(self.invad))
+        print ("Ignored      : {} us".format(self.ignore))
         for k in sorted(self.lat_distribution):
-            print k, ':', self.lat_distribution[k]
+            print (k, ':', self.lat_distribution[k])
 
 
 
@@ -83,13 +83,13 @@ def parse_stats(fn):
             elif not line.strip():
                 pass
             else:
-                print 'result parse error!!', line
+                print ('result parse error!!', line)
     return (read_stats, write_stats)
 
 
 def aggreate(sl, rtype):
     sllen = len(sl)
-    print sllen, rtype
+    print (sllen, rtype)
     total_stats = stats(rtype, throughput=0, avg=0, ld={})
 
     for sat in sl:
